@@ -1,0 +1,51 @@
+<h1 class='text-center'>Latest Posts</h1>
+
+<!-- =====================  Посты  ======================= -->
+<% @results.each do |row| %>
+	<div class='post-index'>
+
+		<div class='post-index-flexmom'>
+			<div class='post-index-head'>
+				<h4><%= row['author'] %></h4>
+				<span>Post №<%= row['id'] %></span>
+				<p><%= row['created_date'] %></p>
+			</div>
+
+			<div class='post-index-content'>
+				<% if row['content'].size > 900 %>
+					<!-- если пост слишком длинный берем только 900 символов или менее до пробела -->
+					<% i = row['content'][0..900].reverse.index(' ') %>
+					<%= row['content'][0..900-i] %>
+				<% else %>
+					<%= row['content'] %> 
+				<% end %>	
+				<a href="/details/<%= row['id'] %>">... Читать далее &raquo;</a>	
+			</div>
+		</div>
+
+		<div class='post-index-comments text-center'>
+			<a href="/details/<%= row['id'] %>"> 
+				<!-- тело ссылки со счетчиком комментариев -->
+				Comments(<%= @comment_counter.find{|hh| hh['post_id'] == row['id'] }['count'] rescue 0 %>)
+			</a>
+		</div>
+
+	</div>
+<% end %>
+
+<!-- =====================  Номера страниц  ======================= -->
+<div class="page-counter">
+	<% ('1'..@page_counter.to_s).each do |no| %>
+
+		<div class='page-no'>			
+			<% if (!@page_id && no == '1') or @page_id == no %>
+				<!-- tytle для селектора для кнопки активной страницы -->
+				<% title = 'title="active"' %>
+			<% else %>
+				<% title = '' %>
+			<% end %>		
+			<a href="/posts/<%=no%>" class="trans" <%= title %>><%= no %></a>
+		</div>
+
+	<% end %>
+</div>
