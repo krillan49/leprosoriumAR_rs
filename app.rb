@@ -9,3 +9,7 @@ end
 
 class Comment < ActiveRecord::Base
 end
+
+get '/' do 
+  erb '<h1> Hello</h1>'
+end
