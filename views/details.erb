@@ -2,9 +2,9 @@
 
 <br>
 <p>
-	<%= @row['content'] %>
+	<%= @post.content %>
 	<br><br>
-	Added by <b><%= @row['author'] %></b> at <%= @row['created_date'] %>
+	Added by <b><%= @post.author %></b> at <%= @post.created_at %>
 </p>
 
 
@@ -12,19 +12,21 @@
 <h4>Comments:</h4>
 <br>
 
+<!-- Форма для того чтобы оставить комментарии к посту -->
+<form action="/details/<%= @post.id %>" method="POST">
+	<textarea name="content" rows="6" placeholder="Напишите ваш комментарий"></textarea>
+	<br>
+ 	<button type="submit">Add comment</button>
+</form>
+
+
 <!-- Уже написанные комментарии из запроса выбравшего комментарии для конкретного поста -->
 <% @comments.each do |comment| %>
 	<p>
-		<%= comment['content'] %>
+		<%= comment.content %>
 		<br><br>
-		<span style="font-size: 80%; color: #999;">Added at <%= comment['created_date'] %></span>
+		<span style="font-size: 80%; color: #999;">Added at <%= comment.created_at %></span>
 	</p>
 	<hr>
 <% end %>
 
-<!-- Форма для того чтобы оставить комментарии к посту -->
-<form action="/details/<%= @row['id'] %>" method="POST">
-	<textarea name="content" class="form-control" rows="6" placeholder="Напишите ваш комментарий"></textarea>
-	<br>
- 	<button type="submit" class="btn btn-primary">Add comment</button>
-</form>
