@@ -14,3 +14,13 @@ get '/' do
   @posts = Post.order('created_at DESC') 
   erb :index
 end
+
+get '/new' do
+  erb :new
+end
+
+post '/new' do
+  post = Post.new(params[:post])
+  post.save
+  redirect to '/'
+end
