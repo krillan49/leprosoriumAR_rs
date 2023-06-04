@@ -1,51 +1,17 @@
-<h1 class='text-center'>Latest Posts</h1>
+<h2>Latest Posts</h2>
+<br>
 
-<!-- =====================  Посты  ======================= -->
-<% @results.each do |row| %>
-	<div class='post-index'>
+<!-- Данные из каждого поста -->
+<% @posts.each do |post| %>
+	<p>
+		<h4>Post №<%= post.id %></h4> <!-- Выводим номер поста -->
+		<%= post.content %> <!-- Выводим сам пост -->
+		<br><br>
+		Added by <b><%= post.author %></b> at <%= post.created_at %> <!-- Выводим автора и дату поста -->
+		<br><br>
 
-		<div class='post-index-flexmom'>
-			<div class='post-index-head'>
-				<h4><%= row['author'] %></h4>
-				<span>Post №<%= row['id'] %></span>
-				<p><%= row['created_date'] %></p>
-			</div>
-
-			<div class='post-index-content'>
-				<% if row['content'].size > 900 %>
-					<!-- если пост слишком длинный берем только 900 символов или менее до пробела -->
-					<% i = row['content'][0..900].reverse.index(' ') %>
-					<%= row['content'][0..900-i] %>
-				<% else %>
-					<%= row['content'] %> 
-				<% end %>	
-				<a href="/details/<%= row['id'] %>">... Читать далее &raquo;</a>	
-			</div>
-		</div>
-
-		<div class='post-index-comments text-center'>
-			<a href="/details/<%= row['id'] %>"> 
-				<!-- тело ссылки со счетчиком комментариев -->
-				Comments(<%= @comment_counter.find{|hh| hh['post_id'] == row['id'] }['count'] rescue 0 %>)
-			</a>
-		</div>
-
-	</div>
+		<!--                 Создаем ссылку и соотв адрес страницы для универсального обработчика -->
+		<a href="/details/<%= post.id %>">Comments</a> 
+	</p>
+	<hr>
 <% end %>
-
-<!-- =====================  Номера страниц  ======================= -->
-<div class="page-counter">
-	<% ('1'..@page_counter.to_s).each do |no| %>
-
-		<div class='page-no'>			
-			<% if (!@page_id && no == '1') or @page_id == no %>
-				<!-- tytle для селектора для кнопки активной страницы -->
-				<% title = 'title="active"' %>
-			<% else %>
-				<% title = '' %>
-			<% end %>		
-			<a href="/posts/<%=no%>" class="trans" <%= title %>><%= no %></a>
-		</div>
-
-	<% end %>
-</div>

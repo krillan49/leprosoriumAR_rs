@@ -10,6 +10,7 @@ end
 class Comment < ActiveRecord::Base
 end
 
-get '/' do 
-  erb '<h1> Hello</h1>'
+get '/' do
+  @posts = Post.order('created_at DESC') 
+  erb :index
 end
