@@ -1,9 +1,12 @@
 <h1 class='text-center'>Add New Post</h1>
 
 <form action="/new" method="POST">
-	<textarea name="post[content]" rows="6" placeholder="Введите здесь текст поста"></textarea>
+	<textarea name="post[content]" rows="6" placeholder="Введите здесь текст поста">
+		<%= @post.content %>
+	</textarea>
 	<br>
 	<label>Введите свое имя</label><br>
-	<input type="text" name="post[author]"><br>
+	<input type="text" name="post[author]" value="<%= @post.author %>">
+	<br>
  	<button type="submit">Отправить</button>
 </form>
