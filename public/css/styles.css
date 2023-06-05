@@ -26,6 +26,19 @@ a {text-decoration: none;}
 
 .text-center { text-align: center;}
 
+.button-1 {
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: rgb(90, 103, 137);
+  color: lightblue;
+  border: 1px solid lightblue;
+}
+.button-1:hover {
+  background-color: lightblue;
+  color: rgb(90, 103, 137);
+  border: 1px solid rgb(90, 103, 137);
+}
+
 
 /*=====================================
 Хедер  layout.erb 
@@ -186,23 +199,40 @@ details.erb
   font-size: 1.5rem;
 }
 
-.post-details-content button {
-  font-size: 1rem;
-  padding: 0.5rem;
-  background-color: rgb(90, 103, 137);
-  color: lightblue;
-  border: 1px solid lightblue;
-}
-.post-details-content button:hover {
-  background-color: lightblue;
-  color: rgb(90, 103, 137);
-  border: 1px solid rgb(90, 103, 137);
-}
-
 .comment-details-content {
   text-indent: 1.5rem;
 }
 .c-d-date {
   font-size: 80%; 
   color: #999;
+}
+
+
+/*=====================================
+new.erb 
+=====================================*/
+
+.main-new {
+  margin: 2rem 15%;
+  padding: 1rem;
+  background-color: rgb(172, 177, 188);
+}
+
+.main-new textarea {
+  margin-bottom: 1rem;
+  outline: none;
+  border: 0;
+  background-color: #ddd;
+  width: 99.5%;
+  height: 30rem;
+  font-size: 1.5rem;
+}
+
+.main-new input[name="add_post[author]"] {
+  margin-bottom: 1rem;
+  outline: none;
+  border: 0;
+  background-color: #ddd;
+  font-size: 2rem;
+  max-width: 99.5%;
 }
