@@ -15,6 +15,7 @@ end
 
 get '/' do
   @posts = Post.order('created_at DESC') 
+  @comment_counter = Comment.all  # для счетчика комментариев
   erb :index
 end
 

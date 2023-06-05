@@ -24,7 +24,9 @@
 		</div>
 
 		<div class='post-index-comments text-center'>
-			<a href="/details/<%= post.id %>"><b>Comments</b></a>
+			<a href="/details/<%= post.id %>"> <!-- тело ссылки со счетчиком комментариев -->
+				<b>Comments(<%= @comment_counter.count{|comment| comment.post_id == post.id} %>)</b>
+			</a>			
 		</div>
 
 	</div>
