@@ -54,7 +54,7 @@ end
 # =============================================
 get '/details/:post_id' do
   @post = Post.find(params[:post_id])
-  @comments = Comment.where("post_id = ?", params[:post_id])
+  @comments = Comment.where("post_id = ?", params[:post_id]).order('created_at DESC')
   erb :details
 end
 
@@ -65,6 +65,6 @@ post '/details/:post_id' do
   comment.save
 
   @post = Post.find(params[:post_id])
-  @comments = Comment.where("post_id = ?", params[:post_id])
+  @comments = Comment.where("post_id = ?", params[:post_id]).order('created_at DESC')
   erb :details
 end

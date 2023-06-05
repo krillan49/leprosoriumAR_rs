@@ -1,32 +1,30 @@
 <h1 class='text-center'>Post details</h1>
 
-<br>
-<p>
-	<%= @post.content %>
-	<br><br>
-	Added by <b><%= @post.author %></b> at <%= @post.created_at %>
-</p>
+<div class='post-details'>
 
+	<div class='post-details-content'>
+		<div><%= @post.content %></div>
+		<p>Added by <b><%= @post.author %></b> at <%= @post.created_at %></p>
 
-<br>
-<h4>Comments:</h4>
-<br>
+		<hr>
+		<!-- Форма для того чтобы оставить комментарии к посту -->
+		<form action="/details/<%= @post.id %>" method="POST">
+			<textarea name="content" placeholder="Напишите ваш комментарий"></textarea>
+			<br>
+			<button type="submit">Отправить комментарий</button>
+		</form>
+	</div>
 
-<!-- Форма для того чтобы оставить комментарии к посту -->
-<form action="/details/<%= @post.id %>" method="POST">
-	<textarea name="content" rows="6" placeholder="Напишите ваш комментарий"></textarea>
-	<br>
- 	<button type="submit">Add comment</button>
-</form>
+	<h4 class='text-center'>Comments:</h4>
 
+	<!-- Уже написанные комментарии из запроса выбравшего комментарии для конкретного поста -->
+	<% @comments.each do |comment| %>
+		<div>
+			<p class='comment-details-content'><%= comment.content %></p>
+			<span class='c-d-date'>Added at <%= comment.created_at %></span>
+		</div>
+		<hr>
+	<% end %>
 
-<!-- Уже написанные комментарии из запроса выбравшего комментарии для конкретного поста -->
-<% @comments.each do |comment| %>
-	<p>
-		<%= comment.content %>
-		<br><br>
-		<span style="font-size: 80%; color: #999;">Added at <%= comment.created_at %></span>
-	</p>
-	<hr>
-<% end %>
+</div>
 
