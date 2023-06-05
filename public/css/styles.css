@@ -1,4 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* font-family: 'Montserrat', sans-serif; */
+
+
+/*=====================================
+Общие стили
+=====================================*/
+
 body {
   margin: 0;
   padding: 0;
+  outline: none; /* убираем обводку по умолчанию, например у активных инпут полей */
+  background-color: #d9e1e0;
+  font-family: 'Montserrat', sans-serif;
 }
+
+a {text-decoration: none;}
+
+.trans:hover {
+  -webkit-transition: all.6s ease;
+	-moz-transition: all.6s ease;
+	-o-transition: all.6s ease;
+	-ms-transition: all.6s ease;
+	transition: all.6s ease;
+}
+
+.text-center { text-align: center;}
+
+
+/*=====================================
+Хедер  layout.erb   #333  #c53
+=====================================*/
+
+header { 
+  background-color: rgb(79, 106, 176);
+  padding: 1rem 15%;
+}
+
+#head-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* header img { width: 3rem;} */  /* пока убрано */
+
+header a {color: lightblue;}
+
+header a[title="На главную страницу"] {
+  font-size: 2.1rem;
+  font-weight: 700;
+}
+
+#h1-box2 { font-size: 1.3rem; }
+#h1-box2>a { margin-right: 3rem; }
+#h1-box2>a:hover { color: white; }
+
+#h1-box3>a {
+  font-weight: 500;
+  border-radius: 5px;
+  margin-right: .8rem;
+  padding: .7rem 1.2rem;
+  background-color: rgb(79, 106, 176);
+  color: lightblue;
+  border: 1px solid lightblue;
+}
+#h1-box3>a:hover {
+  background-color: lightblue;
+  color: rgb(79, 106, 176);
+}
+
+@media (max-width: 1330px) {
+  header { padding: 1rem 5%;}
+  #h1-box3 { 
+    margin: 1rem 0; 
+    font-size: .9rem;
+  }
+}
+
+
+/*=====================================
+index.erb
+=====================================*/
+
+/*   Посты  */
+
+/* .post-index {
+  background-color: #bbb;
+  margin: 2rem 15%;
+  padding: 1rem;
+  padding-bottom: .5rem;
+}
+@media (max-width: 1330px) {
+  .post-index {
+    margin: 2rem 5%;
+  }
+}
+
+.post-index-flexmom {
+  display: flex;
+  justify-content: space-around;
+}
+@media (max-width: 800px) {
+  .post-index-flexmom {
+    flex-direction: column;
+  }
+}
+
+.post-index-head { 
+  flex-basis: 15%;
+}
+
+.post-index-content {
+  flex-basis: 80%;
+
+  background-color: #ddd;
+  padding: 1rem;
+}
+
+.post-index-comments {
+  margin-top: .5rem;
+}
+
+.post-index a {
+  color: #c53;
+}
+.post-index a:hover {
+  color: rgb(79, 106, 176);
+} */
+
+/*  Номера страниц  */
+
+/* .page-counter {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.page-no>a {
+  font-size: 2rem;  
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+  border: 1px solid silver;
+}
+.page-no>[title=active] {
+  background-color: #c53;
+}
+.page-no>a:hover {
+  background-color: rgb(79, 106, 176);
+} */
