@@ -32,7 +32,7 @@ a {text-decoration: none;}
 =====================================*/
 
 header { 
-  background-color: rgb(79, 106, 176);
+  background-color: rgb(90, 103, 137);
   padding: 1rem 15%;
 }
 
@@ -61,13 +61,13 @@ header a[title="На главную страницу"] {
   border-radius: 5px;
   margin-right: .8rem;
   padding: .7rem 1.2rem;
-  background-color: rgb(79, 106, 176);
+  background-color: rgb(90, 103, 137);
   color: lightblue;
   border: 1px solid lightblue;
 }
 #h1-box3>a:hover {
   background-color: lightblue;
-  color: rgb(79, 106, 176);
+  color: rgb(90, 103, 137);
 }
 
 @media (max-width: 1330px) {
@@ -85,8 +85,8 @@ index.erb
 
 /*   Посты  */
 
-/* .post-index {
-  background-color: #bbb;
+.post-index {
+  background-color: rgb(172, 177, 188);
   margin: 2rem 15%;
   padding: 1rem;
   padding-bottom: .5rem;
@@ -123,11 +123,11 @@ index.erb
 }
 
 .post-index a {
-  color: #c53;
+  color: rgb(90, 103, 137);
 }
 .post-index a:hover {
-  color: rgb(79, 106, 176);
-} */
+  color: lightblue;
+}
 
 /*  Номера страниц  */
 

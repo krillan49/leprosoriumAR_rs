@@ -1,17 +1,31 @@
-<h2>Latest Posts</h2>
-<br>
+<h1 class="text-center">Latest Posts</h1>
 
-<!-- Данные из каждого поста -->
+<!-- =====================  Посты  ======================= -->
 <% @posts.each do |post| %>
-	<p>
-		<h4>Post №<%= post.id %></h4> <!-- Выводим номер поста -->
-		<%= post.content %> <!-- Выводим сам пост -->
-		<br><br>
-		Added by <b><%= post.author %></b> at <%= post.created_at %> <!-- Выводим автора и дату поста -->
-		<br><br>
+	<div class='post-index'>
 
-		<!--                 Создаем ссылку и соотв адрес страницы для универсального обработчика -->
-		<a href="/details/<%= post.id %>">Comments</a> 
-	</p>
-	<hr>
+		<div class='post-index-flexmom'>
+			<div class='post-index-head'>
+				<h4><%= post.author %></h4> 
+				<span>Post №<%= post.id %></span>
+				<p><%= post.created_at %></p>
+			</div>
+
+			<div class='post-index-content'>
+				<% if post.content.size > 900 %>
+					<!-- если пост слишком длинный берем только 900 символов или менее до пробела -->
+					<% i = post.content[0..900].reverse.index(' ') %>
+					<%= post.content[0..900-i] %>
+				<% else %>
+					<%= post.content %> 
+				<% end %>	
+				<a href="/details/<%= post.id %>"><b>... Читать далее &raquo;</b></a>
+			</div>
+		</div>
+
+		<div class='post-index-comments text-center'>
+			<a href="/details/<%= post.id %>"><b>Comments</b></a>
+		</div>
+
+	</div>
 <% end %>
