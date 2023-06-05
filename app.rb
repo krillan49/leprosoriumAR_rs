@@ -27,7 +27,7 @@ get '/posts/:page_id' do
   @posts = Post.order('created_at DESC').limit(5).offset((@page_id.to_i - 1) * 5) 
   @comment_counter = Comment.all  # для счетчика комментариев
 	
-	@page_counter = (@posts.size / 5.0).ceil # общее число страниц(для переключателя) относительно постов
+	@page_counter = (Post.all.size / 5.0).ceil # общее число страниц(для переключателя) относительно постов
 	erb :index			
 end
 

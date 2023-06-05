@@ -131,7 +131,7 @@ index.erb
 
 /*  Номера страниц  */
 
-/* .page-counter {
+.page-counter {
   margin: 3rem 0;
   display: flex;
   justify-content: center;
@@ -140,13 +140,14 @@ index.erb
 .page-no>a {
   font-size: 2rem;  
   padding: 1rem;
-  background-color: #333;
-  color: white;
-  border: 1px solid silver;
+  background-color: rgb(172, 177, 188);
+  color: #d9e1e0;
+  border: 1px solid #d9e1e0;
 }
 .page-no>[title=active] {
-  background-color: #c53;
+  background-color: rgb(90, 103, 137);
 }
 .page-no>a:hover {
-  background-color: rgb(79, 106, 176);
-} */
+  color:rgb(90, 103, 137);
+  background-color: lightblue;
+}
