@@ -1,6 +1,6 @@
 <h1 class="text-center">Latest Posts</h1>
 
-<!-- =====================  Посты  ======================= -->
+<!-- =====================  Посты(относительно @offset)  ======================= -->
 <% @posts.each do |post| %>
 	<div class='post-index'>
 
@@ -31,3 +31,20 @@
 
 	</div>
 <% end %>
+
+<!-- =====================  Номера страниц  ======================= -->
+<div class="page-counter">
+	<% ('1'..@page_counter.to_s).each do |page_no| %>
+
+		<div class='page-no'>	
+			<!-- tytle для селектора для кнопки активной страницы -->		
+			<% if (!@page_id && page_no == '1') or @page_id == page_no %>
+				<% title = 'title="active"' %>
+			<% else %>
+				<% title = '' %>
+			<% end %>		
+			<a href="/posts/<%=page_no%>" class="trans" <%= title %>><%= page_no %></a>
+		</div>
+
+	<% end %>
+</div>

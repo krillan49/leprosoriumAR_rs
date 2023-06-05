@@ -13,12 +13,27 @@ class Comment < ActiveRecord::Base
   validates :content, presence: true
 end
 
+# =============================================
+# главная страница, на ней отображаем все написанные ранее посты
+# =============================================
 get '/' do
-  @posts = Post.order('created_at DESC') 
-  @comment_counter = Comment.all  # для счетчика комментариев
-  erb :index
+  redirect to '/posts/1'
 end
 
+# для следующих страниц(по 5 постов)
+get '/posts/:page_id' do
+  @page_id = params[:page_id]
+
+  @posts = Post.order('created_at DESC').limit(5).offset((@page_id.to_i - 1) * 5) 
+  @comment_counter = Comment.all  # для счетчика комментариев
+	
+	@page_counter = (@posts.size / 5.0).ceil # общее число страниц(для переключателя) относительно постов
+	erb :index			
+end
+
+# =============================================
+# страница для создания нового поста
+# =============================================
 get '/new' do
   @post = Post.new
   erb :new
@@ -34,6 +49,9 @@ post '/new' do
   end
 end
 
+# =============================================
+# страницы отдельных постов и коментариев к ним
+# =============================================
 get '/details/:post_id' do
   @post = Post.find(params[:post_id])
   @comments = Comment.where("post_id = ?", params[:post_id])
